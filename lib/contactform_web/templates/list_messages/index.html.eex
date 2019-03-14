@@ -1,0 +1,15 @@
+<h2>Lista emaliów</h2>
+<%= for message <- @messages do %>
+<div class="message-wrapper">
+    <div class="id-wrap">
+        <p><%= message.id  %></p>
+    </div>
+    <div class="email-wrap">
+        <p><%= message.email  %></p>
+    </div>
+    <div class="content-wrap">
+        <p><%= message.content %></p>
+    </div>
+    <%= button("Usuń", to: "/listmessages/#{message.id}", method: "delete", class: "delete-message")%>
+</div>
+<% end %> 

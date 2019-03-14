@@ -1,0 +1,12 @@
+<h2>Formularz kontaktowy</h2>
+<%= form_for @changeset, Routes.email_path(@conn, :create), fn f -> %>
+  <label>
+    Email: <%= email_input f, :email, placeholder: "Email", required: "" %> 
+  </label>
+
+  <label>
+    Wiadomość: <%= textarea f, :content, placeholder: "Wiadomość", required: "" %>
+  </label>
+
+  <%= submit "Wyślij" %>
+<% end %>

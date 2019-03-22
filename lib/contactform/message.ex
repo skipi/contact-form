@@ -1,7 +1,6 @@
 defmodule Contactform.Message do
   use Ecto.Schema
   import Ecto.Changeset
-  import Ecto.Query
 
   schema "messages" do
     field :content, :string
@@ -10,11 +9,15 @@ defmodule Contactform.Message do
     timestamps()
   end
 
+  @params [:email, :content, :inserted_at]
+  @required_params @params
+
+  # Casting inserted_at, created_at
   @doc false
   def changeset(message, attrs \\ %{}) do
     message
-    |> cast(attrs, [:email, :content])
-    |> validate_required([:email, :content])
+    |> cast(attrs, @params)
+    |> validate_required(@required_params)
     |> validate_format(:email, ~r/([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/)
   end
 end

@@ -19,6 +19,11 @@ defmodule ContactformWeb.Router do
     get "/", PageController, :index
     resources "/email", EmailController
     resources "/listmessages", ListMessagesController
+    resources "/registrations", UserController, only: [:new, :create]
+
+    get "/sign-in", SessionController, :new
+    post "/sign-in", SessionController, :create
+    delete "/sign-out", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.

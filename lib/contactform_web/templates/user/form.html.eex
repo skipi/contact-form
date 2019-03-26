@@ -1,0 +1,19 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Coś poszło nie tak. Błędy wyświetlają się poniżej.</p>
+    </div>
+  <% end %>
+
+  <%= label f, "Nazwa użytkownika" %>
+  <%= text_input f, :username %>
+  <%= error_tag f, :username %>
+
+  <%= label f, "Hasło" %>
+  <%= password_input f, :encrypted_password %>
+  <%= error_tag f, :encrypted_password %>
+
+  <div>
+    <%= submit "Zarejestruj" %>
+  </div>
+<% end %>

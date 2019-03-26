@@ -41,6 +41,7 @@ defmodule ContactformWeb do
 
       import ContactformWeb.ErrorHelpers
       import ContactformWeb.Gettext
+      import ContactformWeb.Helpers.Auth, only: [signed_in?: 1]
       alias ContactformWeb.Router.Helpers, as: Routes
     end
   end

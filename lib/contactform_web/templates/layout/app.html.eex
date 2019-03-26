@@ -19,7 +19,13 @@
           <ul>
             <li class="active"><%= link("Strona główna", to: "/") %></li>
             <li><%= link("Email sender", to: "/email") %></li>
-            <li><%= link("Lista wiadomości", to: "/listmessages") %></li>
+            <%= if signed_in?(@conn) do %>
+              <li><%= link("Lista wiadomości", to: "/listmessages") %></li>
+              <li><%= link "Wyloguj się", to: Routes.session_path(@conn, :delete), method: :delete %></li>
+            <% else %>
+              <li><%= link "Zaloguj się", to: Routes.session_path(@conn, :new) %></li>
+              <li><%= link "Zarejestruj się", to: Routes.user_path(@conn, :new) %></li>
+            <% end %>
           </ul>
         </nav>
       </section>

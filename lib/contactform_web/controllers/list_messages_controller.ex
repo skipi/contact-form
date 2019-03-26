@@ -53,7 +53,6 @@ defmodule ContactformWeb.ListMessagesController do
     |> put_flash(error_code, error_msg)
     |> redirect(to: Routes.list_messages_path(conn, :index))
   end
-<<<<<<< HEAD
 
   defp check_auth(conn, _args) do
     if user_id = get_session(conn, :current_user_id) do
@@ -68,6 +67,5 @@ defmodule ContactformWeb.ListMessagesController do
       |> halt()
     end
   end
-=======
->>>>>>> origin/master
+
 end

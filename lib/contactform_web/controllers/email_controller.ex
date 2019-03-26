@@ -8,7 +8,9 @@ defmodule ContactformWeb.EmailController do
     render(conn, "index.html", changeset: changeset)
   end
 
+  # Gettext
   def create(conn, %{"message" => message_params}) do
+
     Message.changeset(%Message{}, message_params)
     |> Repo.insert()
     |> case do

@@ -12,6 +12,7 @@ defmodule Contactform.Message do
   @params [:email, :content, :inserted_at]
   @required_params @params
 
+
   @doc false
   def changeset(message, attrs \\ %{}) do
     message

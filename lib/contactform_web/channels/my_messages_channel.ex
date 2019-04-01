@@ -3,7 +3,7 @@ defmodule ContactformWeb.MyMessagesChannel do
   import Logger
 
   def join("my_messages:lobby", _payload, socket) do
-    Logger.debug socket.assigns.current_user_id
+    Logger.debug(socket.assigns.current_user_id)
     {:ok, socket}
   end
 
@@ -14,7 +14,16 @@ defmodule ContactformWeb.MyMessagesChannel do
   # broadcast to everyone in the current topic (my_messages:lobby).
   def handle_in("newmessage", payload, socket) do
     # ContactformWeb.Endpoint.broadcast("my_message:lobby", "msg", %{uid: uid})
-    broadcast socket, "newmessage", payload
+    broadcast(socket, "newmessage", payload)
+    {:noreply, socket}
+  end
+
+  intercept ["newmessage"]
+
+  def handle_out("newmessage", payload, socket) do
+    # socket
+    # |> push("newmessage", payload)
+
     {:noreply, socket}
   end
 

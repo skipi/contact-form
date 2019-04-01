@@ -120,6 +120,18 @@ header nav ul {
 header nav a {
   display: block;
 }
+.menu-wrapper{
+  position: relative;
+}
+/* #test::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+  background-color: #ff0000;
+} */
 
 .message-wrapper{
   position: relative;

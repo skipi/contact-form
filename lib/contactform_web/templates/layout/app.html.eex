@@ -16,11 +16,11 @@
           <img src="<%= Routes.static_path(@conn, "/images/logo-reconizer.png") %>" alt="Phoenix Framework Logo"/>
         </a>
         <nav role="navigation">
-          <ul>
+          <ul class="menu-wrapper">
             <li class="active"><%= link("Strona główna", to: "/") %></li>
             <li><%= link("Email sender", to: "/email") %></li>
             <%= if signed_in?(@conn) do %>
-              <li><%= link("Lista wiadomości", to: "/listmessages") %></li>
+              <li class="msg-notification"><%= link("Lista wiadomości", to: "/listmessages") %><div id="test"></div></li>
               <li><%= link "Wyloguj się", to: Routes.session_path(@conn, :delete), method: :delete %></li>
             <% else %>
               <li><%= link "Zaloguj się", to: Routes.session_path(@conn, :new) %></li>
@@ -35,6 +35,8 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
+    <script>window.userToken = "<%= assigns[:user_token] %>";</script>
+    <script>window.userId = "<%= assigns[:user_token] %>";</script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

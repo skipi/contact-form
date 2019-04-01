@@ -1,22 +1,23 @@
 defmodule ContactformWeb.ListMessagesController do
   use ContactformWeb, :controller
+  import Ecto.Query
+  require Logger
 
   alias Contactform.Message
   alias Contactform.Repo
 
-  alias Contactform.Accounts
-
-  plug :check_auth when action in [:index, :delete, :respond]
-
+  plug :check_auth when action in [:index]
 
   def index(conn, _params) do
-    # query = from(p in Message, select: p)
-    messages =
-      Message
-      |> Repo.all()
+    # messages =
+    #   Message
+    #   |> Repo.get_by(email: "mail@wp.pl")
 
-    # messages = Repo.all(query)
+    query = from(m in Message, where: m.email == ^conn.assigns.current_user.username , select: m)
+    messages = Repo.all(query)
     render(conn, "index.html", messages: messages)
+
+
   end
 
   def delete(conn, %{"id" => message_id}) do
@@ -55,11 +56,8 @@ defmodule ContactformWeb.ListMessagesController do
   end
 
   defp check_auth(conn, _args) do
-    if user_id = get_session(conn, :current_user_id) do
-    current_user = Accounts.get_user!(user_id)
-
-    conn
-      |> assign(:current_user, current_user)
+    if conn.assigns.signed_in? do
+      conn
     else
       conn
       |> put_flash(:error, "Musisz być zalogowany, aby mieć dostęp do tej zakładki")
@@ -67,5 +65,4 @@ defmodule ContactformWeb.ListMessagesController do
       |> halt()
     end
   end
-
 end

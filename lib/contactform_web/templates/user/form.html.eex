@@ -5,8 +5,8 @@
     </div>
   <% end %>
 
-  <%= label f, "Nazwa użytkownika" %>
-  <%= text_input f, :username %>
+  <%= label f, "Email" %>
+  <%= email_input f, :username %>
   <%= error_tag f, :username %>
 
   <%= label f, "Hasło" %>

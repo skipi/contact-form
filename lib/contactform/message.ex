@@ -9,7 +9,7 @@ defmodule Contactform.Message do
     timestamps()
   end
 
-  @params [:email, :content, :inserted_at]
+  @params [:email, :content]
   @required_params @params
 
 

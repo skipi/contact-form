@@ -6,7 +6,7 @@ defmodule Contactform.Accounts.User do
 
   schema "users" do
     field :encrypted_password, :string
-    field :username, :string
+    field :email, :string, source: :username
 
     timestamps()
   end
@@ -14,9 +14,9 @@ defmodule Contactform.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :encrypted_password])
-    |> validate_required([:username, :encrypted_password])
-    |> unique_constraint(:username)
+    |> cast(attrs, [:email, :encrypted_password])
+    |> validate_required([:email, :encrypted_password])
+    |> unique_constraint(:email)
     |> update_change(:encrypted_password, &Crypto.hash/1)
   end
 end

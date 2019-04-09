@@ -6,8 +6,8 @@
   <% end %>
 
   <%= label f, "Email" %>
-  <%= email_input f, :username %>
-  <%= error_tag f, :username %>
+  <%= email_input f, :email %>
+  <%= error_tag f, :email %>
 
   <%= label f, "Hasło" %>
   <%= password_input f, :encrypted_password %>

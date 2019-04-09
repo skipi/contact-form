@@ -13,7 +13,9 @@ defmodule ContactformWeb.EmailController do
     Message.changeset(%Message{}, message_params)
     |> Repo.insert()
     |> case do
-      {:ok, _message} ->
+      {:ok, message} ->
+        ContactformWeb.Endpoint.broadcast("my_messages:lobby", "new_message", %{message_id: message.id})
+
         conn
         |> put_flash(:info, "Wiadomość została wysłana")
         |> redirect(to: Routes.email_path(conn, :index))

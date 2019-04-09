@@ -9,15 +9,12 @@ defmodule ContactformWeb.ListMessagesController do
   plug :check_auth when action in [:index]
 
   def index(conn, _params) do
-    # messages =
-    #   Message
-    #   |> Repo.get_by(email: "mail@wp.pl")
+    from(m in Message, where: m.read == false and m.email == ^conn.assigns.current_user.email, select: m)
+    |> Repo.update_all(set: [read: true])
 
-    query = from(m in Message, where: m.email == ^conn.assigns.current_user.username , select: m)
+    query = from(m in Message, where: m.email == ^conn.assigns.current_user.email , select: m)
     messages = Repo.all(query)
     render(conn, "index.html", messages: messages)
-
-
   end
 
   def delete(conn, %{"id" => message_id}) do
@@ -25,7 +22,6 @@ defmodule ContactformWeb.ListMessagesController do
     |> case do
       nil ->
         {:error, nil}
-
       message ->
         {:ok, message}
     end

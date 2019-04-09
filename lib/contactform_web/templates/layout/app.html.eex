@@ -12,7 +12,7 @@
   <body>
     <header>
       <section class="container">
-        <a href="http://phoenixframework.org/" class="phx-logo">
+        <a href="localhost:4000" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/logo-reconizer.png") %>" alt="Phoenix Framework Logo"/>
         </a>
         <nav role="navigation">
@@ -20,7 +20,12 @@
             <li class="active"><%= link("Strona główna", to: "/") %></li>
             <li><%= link("Email sender", to: "/email") %></li>
             <%= if signed_in?(@conn) do %>
-              <li class="msg-notification"><%= link("Lista wiadomości", to: "/listmessages") %><div id="test"></div></li>
+              <li class="list-link"><%= link("Lista wiadomości", to: "/listmessages") %>
+                <%= if is_read?(@conn) do %>
+                <% else %>
+                  <div id="notification"></div>
+                <% end %>
+              </li>
               <li><%= link "Wyloguj się", to: Routes.session_path(@conn, :delete), method: :delete %></li>
             <% else %>
               <li><%= link "Zaloguj się", to: Routes.session_path(@conn, :new) %></li>
@@ -30,6 +35,12 @@
         </nav>
       </section>
     </header>
+    <div class="container">
+      <div id="deleted-notification">
+        <div class="deleted">
+        </div>
+      </div>
+    </div>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

@@ -11,9 +11,11 @@ defmodule Contactform.Application do
       # Start the Ecto repository
       Contactform.Repo,
       # Start the endpoint when the application starts
-      ContactformWeb.Endpoint
+      ContactformWeb.Endpoint,
+
+      # Contactform.DeleteMsgWorker.start_link(arg)
       # Starts a worker by calling: Contactform.Worker.start_link(arg)
-      # {Contactform.Worker, arg},
+      {Contactform.DeleteMsgWorker, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

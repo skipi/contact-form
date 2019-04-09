@@ -5,13 +5,13 @@ defmodule Contactform.Message do
   schema "messages" do
     field :content, :string
     field :email, :string
+    field :read, :boolean
 
     timestamps()
   end
 
   @params [:email, :content]
   @required_params @params
-
 
   @doc false
   def changeset(message, attrs \\ %{}) do

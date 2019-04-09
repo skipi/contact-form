@@ -8,12 +8,12 @@ defmodule Contactform.Accounts do
 
   alias Contactform.Accounts.User
 
-  def get_by_username(username) when is_nil(username) do
+  def get_by_username(email) when is_nil(email) do
     nil
   end
 
-  def get_by_username(username) do
-    Repo.get_by(User, username: username)
+  def get_by_username(email) do
+    Repo.get_by(User, email: email)
   end
 
   @doc """

@@ -11,27 +11,37 @@ defmodule ContactformWeb.Router do
     plug :put_user_token
   end
 
+  pipeline :with_auth do
+    plug ContactformWeb.Plugs.SetCurrentUser
+  end
+
+  pipeline :requires_auth do
+    # plug ContactformWeb.Plugs.CheckAuth
+    plug :put_user_token
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", ContactformWeb do
-    pipe_through :browser
+    pipe_through [:browser, :with_auth]
 
     get "/", PageController, :index
-    resources "/email", EmailController
-    resources "/listmessages", ListMessagesController
-    resources "/registrations", UserController, only: [:new, :create]
+
+    scope "/" do
+      pipe_through :requires_auth
+
+      resources "/email", EmailController
+      resources "/listmessages", ListMessagesController
+      resources "/registrations", UserController, only: [:new, :create]
+      delete "/sign-out", SessionController, :delete
+    end
 
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
-    delete "/sign-out", SessionController, :delete
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ContactformWeb do
-  #   pipe_through :api
-  # end
 
   defp put_user_token(conn, _) do
     if current_user = conn.assigns[:current_user] do

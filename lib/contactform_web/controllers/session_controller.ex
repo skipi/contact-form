@@ -7,7 +7,7 @@ defmodule ContactformWeb.SessionController do
   end
 
   def create(conn, %{"session" => auth_params}) do
-    user = Accounts.get_by_username(auth_params["username"])
+    user = Accounts.get_by_username(auth_params["email"])
     case Contactform.Crypto.check_hash(user.encrypted_password, auth_params["password"]) do
       true ->
         conn

@@ -1,3 +1,3 @@
-defmodule ContactformWeb.ListMessagesView do
-  use ContactformWeb, :view
+defmodule ContactFormWeb.ListMessagesView do
+  use ContactFormWeb, :view
 end

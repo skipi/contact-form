@@ -1,4 +1,4 @@
-defmodule ContactForm.Accounts.User do
+defmodule ContactForm.Models.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias ContactForm.Crypto

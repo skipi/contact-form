@@ -1,4 +1,4 @@
-defmodule Contactform.MixProject do
+defmodule ContactForm.MixProject do
   use Mix.Project
 
   def project do
@@ -19,7 +19,7 @@ defmodule Contactform.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Contactform.Application, []},
+      mod: {ContactForm.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

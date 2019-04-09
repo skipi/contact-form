@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(Contactform.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(ContactForm.Repo, :manual)

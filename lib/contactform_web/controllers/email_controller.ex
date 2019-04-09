@@ -1,7 +1,7 @@
-defmodule ContactformWeb.EmailController do
-  use ContactformWeb, :controller
-  alias Contactform.Message
-  alias Contactform.Repo
+defmodule ContactFormWeb.EmailController do
+  use ContactFormWeb, :controller
+  alias ContactForm.Message
+  alias ContactForm.Repo
 
   def index(conn, _params) do
     changeset = Message.changeset(%Message{})
@@ -14,7 +14,9 @@ defmodule ContactformWeb.EmailController do
     |> Repo.insert()
     |> case do
       {:ok, message} ->
-        ContactformWeb.Endpoint.broadcast("my_messages:lobby", "new_message", %{message_id: message.id})
+        ContactFormWeb.Endpoint.broadcast("my_messages:lobby", "new_message", %{
+          message_id: message.id
+        })
 
         conn
         |> put_flash(:info, "Wiadomość została wysłana")
@@ -26,5 +28,4 @@ defmodule ContactformWeb.EmailController do
         |> render("index.html", changeset: changeset)
     end
   end
-
 end

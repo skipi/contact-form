@@ -1,4 +1,4 @@
-defmodule Contactform.DataCase do
+defmodule ContactForm.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule Contactform.DataCase do
 
   using do
     quote do
-      alias Contactform.Repo
+      alias ContactForm.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Contactform.DataCase
+      import ContactForm.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Contactform.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ContactForm.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Contactform.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(ContactForm.Repo, {:shared, self()})
     end
 
     :ok

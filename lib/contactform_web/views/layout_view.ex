@@ -1,3 +1,3 @@
-defmodule ContactformWeb.LayoutView do
-  use ContactformWeb, :view
+defmodule ContactFormWeb.LayoutView do
+  use ContactFormWeb, :view
 end

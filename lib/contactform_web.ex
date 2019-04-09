@@ -1,12 +1,12 @@
-defmodule ContactformWeb do
+defmodule ContactFormWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use ContactformWeb, :controller
-      use ContactformWeb, :view
+      use ContactFormWeb, :controller
+      use ContactFormWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,11 +19,11 @@ defmodule ContactformWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: ContactformWeb
+      use Phoenix.Controller, namespace: ContactFormWeb
 
       import Plug.Conn
-      import ContactformWeb.Gettext
-      alias ContactformWeb.Router.Helpers, as: Routes
+      import ContactFormWeb.Gettext
+      alias ContactFormWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -31,7 +31,7 @@ defmodule ContactformWeb do
     quote do
       use Phoenix.View,
         root: "lib/contactform_web/templates",
-        namespace: ContactformWeb
+        namespace: ContactFormWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
@@ -39,11 +39,11 @@ defmodule ContactformWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import ContactformWeb.ErrorHelpers
-      import ContactformWeb.Gettext
-      import ContactformWeb.Helpers.Auth, only: [signed_in?: 1]
-      import ContactformWeb.Helpers.Notifications, only: [is_read?: 1]
-      alias ContactformWeb.Router.Helpers, as: Routes
+      import ContactFormWeb.ErrorHelpers
+      import ContactFormWeb.Gettext
+      import ContactFormWeb.Helpers.Auth, only: [signed_in?: 1]
+      import ContactFormWeb.Helpers.Notifications, only: [is_read?: 1]
+      alias ContactFormWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -58,7 +58,7 @@ defmodule ContactformWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import ContactformWeb.Gettext
+      import ContactFormWeb.Gettext
     end
   end
 

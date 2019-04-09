@@ -1,12 +1,12 @@
-defmodule Contactform.Accounts do
+defmodule ContactForm.Accounts do
   @moduledoc """
   The Accounts context.
   """
 
   import Ecto.Query, warn: false
-  alias Contactform.Repo
+  alias ContactForm.Repo
 
-  alias Contactform.Accounts.User
+  alias ContactForm.Accounts.User
 
   def get_by_username(email) when is_nil(email) do
     nil

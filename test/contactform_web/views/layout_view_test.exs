@@ -1,3 +1,3 @@
-defmodule ContactformWeb.LayoutViewTest do
-  use ContactformWeb.ConnCase, async: true
+defmodule ContactFormWeb.LayoutViewTest do
+  use ContactFormWeb.ConnCase, async: true
 end

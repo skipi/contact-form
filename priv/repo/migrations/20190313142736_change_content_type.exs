@@ -1,4 +1,4 @@
-defmodule Contactform.Repo.Migrations.ChangeContentType do
+defmodule ContactForm.Repo.Migrations.ChangeContentType do
   use Ecto.Migration
 
   def change do

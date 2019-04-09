@@ -1,4 +1,4 @@
-defmodule ContactForm.Message do
+defmodule ContactForm.Models.Message do
   use Ecto.Schema
   import Ecto.Changeset
 

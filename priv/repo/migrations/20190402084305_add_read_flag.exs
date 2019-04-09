@@ -1,4 +1,4 @@
-defmodule Contactform.Repo.Migrations.AddReadFlag do
+defmodule ContactForm.Repo.Migrations.AddReadFlag do
   use Ecto.Migration
 
   def change do

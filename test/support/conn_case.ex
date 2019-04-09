@@ -1,4 +1,4 @@
-defmodule ContactformWeb.ConnCase do
+defmodule ContactFormWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,18 +19,18 @@ defmodule ContactformWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias ContactformWeb.Router.Helpers, as: Routes
+      alias ContactFormWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint ContactformWeb.Endpoint
+      @endpoint ContactFormWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Contactform.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ContactForm.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Contactform.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(ContactForm.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

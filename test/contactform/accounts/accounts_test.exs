@@ -1,13 +1,16 @@
-defmodule Contactform.AccountsTest do
-  use Contactform.DataCase
+defmodule ContactForm.AccountsTest do
+  use ContactForm.DataCase
 
-  alias Contactform.Accounts
+  alias ContactForm.Accounts
 
   describe "users" do
-    alias Contactform.Accounts.User
+    alias ContactForm.Accounts.User
 
     @valid_attrs %{encrypted_password: "some encrypted_password", username: "some username"}
-    @update_attrs %{encrypted_password: "some updated encrypted_password", username: "some updated username"}
+    @update_attrs %{
+      encrypted_password: "some updated encrypted_password",
+      username: "some updated username"
+    }
     @invalid_attrs %{encrypted_password: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do

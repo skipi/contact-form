@@ -1,4 +1,4 @@
-defmodule Contactform.Repo.Migrations.CreateMessages do
+defmodule ContactForm.Repo.Migrations.CreateMessages do
   use Ecto.Migration
 
   def change do

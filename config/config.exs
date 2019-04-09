@@ -8,14 +8,14 @@
 use Mix.Config
 
 config :contactform,
-  ecto_repos: [Contactform.Repo]
+  ecto_repos: [ContactForm.Repo]
 
 # Configures the endpoint
-config :contactform, ContactformWeb.Endpoint,
+config :contactform, ContactFormWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "yDEvgbR+fQOSxXamdGgjmPOtqvFkKsmLgldnbUXK78djTRUJXcZwbn2nSPHHtIF2",
-  render_errors: [view: ContactformWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Contactform.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: ContactFormWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: ContactForm.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -1,7 +1,7 @@
-defmodule ContactformWeb.Endpoint do
+defmodule ContactFormWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :contactform
 
-  socket "/socket", ContactformWeb.UserSocket,
+  socket "/socket", ContactFormWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -42,5 +42,5 @@ defmodule ContactformWeb.Endpoint do
     key: "_contactform_key",
     signing_salt: "APdW2Zfs"
 
-  plug ContactformWeb.Router
+  plug ContactFormWeb.Router
 end

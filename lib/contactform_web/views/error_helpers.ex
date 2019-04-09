@@ -1,4 +1,4 @@
-defmodule ContactformWeb.ErrorHelpers do
+defmodule ContactFormWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -36,9 +36,9 @@ defmodule ContactformWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(ContactformWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(ContactFormWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(ContactformWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(ContactFormWeb.Gettext, "errors", msg, opts)
     end
   end
 end

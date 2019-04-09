@@ -1,4 +1,3 @@
-defmodule ContactformWeb.SessionView do
-  use ContactformWeb, :view
-
+defmodule ContactFormWeb.SessionView do
+  use ContactFormWeb, :view
 end

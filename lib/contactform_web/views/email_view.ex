@@ -1,3 +1,3 @@
-defmodule ContactformWeb.EmailView do
-  use ContactformWeb, :view
+defmodule ContactFormWeb.EmailView do
+  use ContactFormWeb, :view
 end

@@ -1,5 +1,5 @@
-defmodule ContactformWeb.ErrorView do
-  use ContactformWeb, :view
+defmodule ContactFormWeb.ErrorView do
+  use ContactFormWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

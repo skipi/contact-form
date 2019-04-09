@@ -1,8 +1,9 @@
-defmodule ContactformWeb.UserController do
-  use ContactformWeb, :controller
+defmodule ContactFormWeb.UserController do
+  use ContactFormWeb, :controller
 
-  alias Contactform.Accounts
-  alias Contactform.Accounts.User
+  alias ContactForm.Accounts
+  alias ContactForm.Accounts.User
+
   def new(conn, _params) do
     changeset = Accounts.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
@@ -20,5 +21,4 @@ defmodule ContactformWeb.UserController do
         render(conn, "new.html", changeset: changeset)
     end
   end
-
 end

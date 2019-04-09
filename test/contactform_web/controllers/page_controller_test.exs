@@ -1,5 +1,5 @@
-defmodule ContactformWeb.PageControllerTest do
-  use ContactformWeb.ConnCase
+defmodule ContactFormWeb.PageControllerTest do
+  use ContactFormWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

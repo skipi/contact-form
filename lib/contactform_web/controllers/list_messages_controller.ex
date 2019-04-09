@@ -1,18 +1,19 @@
-defmodule ContactformWeb.ListMessagesController do
-  use ContactformWeb, :controller
+defmodule ContactFormWeb.ListMessagesController do
+  use ContactFormWeb, :controller
   import Ecto.Query
   require Logger
 
-  alias Contactform.Message
-  alias Contactform.Repo
-
-  plug :check_auth when action in [:index]
+  alias ContactForm.Message
+  alias ContactForm.Repo
 
   def index(conn, _params) do
-    from(m in Message, where: m.read == false and m.email == ^conn.assigns.current_user.email, select: m)
+    from(m in Message,
+      where: m.read == false and m.email == ^conn.assigns.current_user.email,
+      select: m
+    )
     |> Repo.update_all(set: [read: true])
 
-    query = from(m in Message, where: m.email == ^conn.assigns.current_user.email , select: m)
+    query = from(m in Message, where: m.email == ^conn.assigns.current_user.email, select: m)
     messages = Repo.all(query)
     render(conn, "index.html", messages: messages)
   end
@@ -22,6 +23,7 @@ defmodule ContactformWeb.ListMessagesController do
     |> case do
       nil ->
         {:error, nil}
+
       message ->
         {:ok, message}
     end
@@ -49,16 +51,5 @@ defmodule ContactformWeb.ListMessagesController do
     conn
     |> put_flash(error_code, error_msg)
     |> redirect(to: Routes.list_messages_path(conn, :index))
-  end
-
-  defp check_auth(conn, _args) do
-    if conn.assigns.signed_in? do
-      conn
-    else
-      conn
-      |> put_flash(:error, "Musisz być zalogowany, aby mieć dostęp do tej zakładki")
-      |> redirect(to: Routes.page_path(conn, :index))
-      |> halt()
-    end
   end
 end

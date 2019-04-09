@@ -1,3 +1,3 @@
-defmodule ContactformWeb.PageView do
-  use ContactformWeb, :view
+defmodule ContactFormWeb.PageView do
+  use ContactFormWeb, :view
 end

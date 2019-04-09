@@ -16,7 +16,6 @@ defmodule ContactformWeb.Router do
   end
 
   pipeline :requires_auth do
-    # plug ContactformWeb.Plugs.CheckAuth
     plug :put_user_token
   end
 
